@@ -1,6 +1,6 @@
-Copyright © 2021-2023 miot.org>
+Copyright © 2021-2023 ortac.org>
 
-This file is part of the MIoT project.
+This file is part of the Ortac project.
 
-The MIoT project cannot be copied and/or distributed without the express
-permission of miot.org <barry@x-ware.co.uk>.
+This Ortac project cannot be copied, distributed or modified without the express
+permission of ortac.org <barry@x-ware.co.uk>.
