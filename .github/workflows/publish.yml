@@ -14,6 +14,10 @@ jobs:
       pages: write
       id-token: write
     
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
     steps:
       - uses: actions/checkout@v4
       - name: Get Release Name
@@ -28,19 +32,19 @@ jobs:
       - name: Don't Publish if versions are different
         if: ${{ env.release_name != env.package_version }}
         run: exit 1
-      # Setup .npmrc file to publish to GitHub Packages
+      # Setup .npmrc file to publish to Packages
       - name: Use node.js 20.x
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           # scope: '@your-org'
       - run: npm ci
-      - run: npm publish
+      - run: npm publish --access=public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_PACKAGES_TOKEN }}
-      # publish github pages
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # publish pages
       # add documentation to ./pages/docs
       - run: npm run docs
       - uses: actions/upload-pages-artifact@v2
