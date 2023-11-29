@@ -29,3 +29,4 @@ prebuild
 externals
 *.tgz
 pages
+*-d.ts
