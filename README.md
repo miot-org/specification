@@ -23,14 +23,14 @@ Includes testing, coverage, coveralls.io, linting, TSDoc and auto creation of a 
 ## Usage
 ESM:
 ```js
-import {add} from '@x-ware-ltd/template-typescript-node-library';
+import {add} from '@ortac/specification';
 
 console.log(add(3, 5)); // 8
 ```
 
 CommonJS:
 ```js
-var lib = require('@x-ware-ltd/template-typescript-node-library');
+var lib = require('@ortac/specification');
 
 console.log(lib.add(3, -1)); // 2
 ```
@@ -41,10 +41,3 @@ Documentation can be found at:
 
 - [add](https://ortac-org.github.io/specification/docs/functions/add.html)
 - [subtract](https://ortac-org.github.io/specification/docs/functions/subtract.html)
-
-## Contributing
-
-Make sure your code passes testing, and create a Pull Request
-```console
-> npm test
-```

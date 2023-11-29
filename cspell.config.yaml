@@ -1,16 +1,40 @@
 dictionaryDefinitions:
+  - name: unitsEn
+    path: "./cspell/unitsEn.txt"
+  - name: unitsEnGb
+    path: "./cspell/unitsEnGb.txt" 
 
 dictionaries:
   - typescript
+  - unitsEnGb
 
 language: en-gb
 
 words:
+  - ortac
+  - powertrain
+  - waterjet
+  - mmsi
+  - NMEA
+  - GNSS
+  - extinguishant
+  - APIPA
+  - Bonjour
+  - OWFS
+  - AVAHI
+  - Mosquitto
+  - miscompare
+  - dedup
+  - HMAC
+  - aton
+  - RAIM
+  - yanmar
+  - volvo
   - mdprepare
   - fsnip
+  - jmespath
   - lcov
   - tsdoc
-  - ortac
 
 ignorePaths:
   - package*.json

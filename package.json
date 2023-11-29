@@ -29,9 +29,9 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "build": "node ./scripts/rm-rf.js ./lib && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/post-build.js",
+    "build": "node ./scripts/rm-rf.js ./lib && node --loader ts-node/esm scripts/build-dts-from-schema.ts && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/post-build.js",
     "docs": "typedoc --excludePrivate --includeVersion --out pages/docs src/index.ts && node ./scripts/cp.js ./src/www ./pages/www",
-    "spellcheck": "cspell **/* --dot",
+    "spellcheck": "cspell **/*.{json,js,md,yaml} --dot",
     "mocha": "mocha --loader=ts-node/esm -r ts-node/register tests/**/*.spec.ts",
     "mocha:cov": "node ./scripts/rm-rf.js ./coverage && c8 npm run mocha",
     "mocha:view": "npm run mocha:cov && start coverage/index.html",
@@ -57,9 +57,13 @@
     "cspell": "^7.3.8",
     "eslint": "^8.52.0",
     "eslint-plugin-tsdoc": "^0.2.17",
+    "json-schema-to-typescript": "^13.1.1",
     "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
     "typedoc": "^0.25.3",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/json-schema": "^7.0.15"
   }
 }

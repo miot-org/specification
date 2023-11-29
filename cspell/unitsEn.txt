@@ -1,0 +1,19 @@
+# cspell:disable
+centimeter
+centimeters
+millimeter
+millimeters
+kilometer
+kilometers
+liter
+liters
+milliliter
+milliliters
+henries
+millihenries
+microhenries
+nanohenries
+centistoke
+centistokes
+centipoise
+centipoises
