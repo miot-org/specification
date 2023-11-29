@@ -29,7 +29,8 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "build": "node ./scripts/rm-rf.js ./lib && node --loader ts-node/esm scripts/build-dts-from-schema.ts && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/post-build.js",
+    "build": "node ./scripts/rm-rf.js ./lib && npm run build:dts && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/post-build.js",
+    "build:dts": "node --loader ts-node/esm scripts/build-dts-from-schema.ts",
     "docs": "typedoc --excludePrivate --includeVersion --out pages/docs src/index.ts && node ./scripts/cp.js ./src/www ./pages/www",
     "spellcheck": "cspell **/*.{json,js,md,yaml} --dot",
     "mocha": "mocha --loader=ts-node/esm -r ts-node/register tests/**/*.spec.ts",
@@ -37,7 +38,7 @@
     "mocha:view": "npm run mocha:cov && start coverage/index.html",
     "eslint": "eslint src/**/*.{ts,tsx}",
     "eslint:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "test": "npm run spellcheck && npm run eslint && npm run mocha:cov",
+    "test": "npm run spellcheck && npm run build:dts && npm run eslint && npm run mocha:cov",
     "prepare": "npm test && npm run build",
     "clean": "node ./scripts/rm-rf.js ./lib ./coverage ./pages"
   },
