@@ -1,6 +1,6 @@
 {
   "name": "@ortac/specification",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Ortac Specification and definition files",
   "type": "module",
   "main": "./lib/cjs/index.js",
@@ -31,7 +31,7 @@
   "scripts": {
     "build": "node ./scripts/rm-rf.js ./lib && npm run build:dts && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/post-build.js",
     "build:dts": "node --loader ts-node/esm scripts/build-dts-from-schema.ts",
-    "docs": "typedoc --excludePrivate --includeVersion --out pages/docs src/index.ts && node ./scripts/cp.js ./src/www ./pages/www",
+    "docs": "typedoc --excludePrivate --includeVersion --out pages/docs src/index.ts && node ./scripts/cp.js ./src/www ./pages",
     "spellcheck": "cspell **/*.{json,js,md,yaml} --dot",
     "mocha": "mocha --loader=ts-node/esm -r ts-node/register tests/**/*.spec.ts",
     "mocha:cov": "node ./scripts/rm-rf.js ./coverage && c8 npm run mocha",
