@@ -1,6 +1,6 @@
 {
   "name": "@ortac/specification",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Ortac Specification and definition files",
   "type": "module",
   "main": "./lib/cjs/index.js",
