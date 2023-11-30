@@ -1,7 +1,10 @@
 import {JSONSchema4} from 'json-schema';
 
+/**
+ * JSON Schema for Locale file format V1_0_0
+ */
 const V1_0_0: JSONSchema4 = {
-  title: 'Ortac Locale Object V1_0_0',
+  title: 'V1_0_0',
   description: 'Full Schema describing the format of the Ortac locale JSON file',
   type: 'object',
   additionalProperties: false,

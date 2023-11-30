@@ -1,8 +1,24 @@
-import {OrtacLocaleObjectV1_0_0} from './locale-d.js';
+import * as ortacLocaleTypes from './locale-d.js';
 
 export const typeGuards = {
   isLocale: {
-    V1_0_0: (json: any): json is OrtacLocaleObjectV1_0_0 => {
+
+    /**
+     * TS type guard function for LocaleObjectV1_0_0
+     * @param json - json to be checked
+     * @returns boolean
+     *
+     * @example
+     * ```ts
+     * import * as ortac from '@ortac/specification';
+     *
+     * const someJson: any = {random: 'value'};
+     * if (ortac.typeGuards.isLocale.V1_0_0(someJson)) {
+     *   // work with known json in locale format
+     * }
+     * ```
+     */
+    V1_0_0: (json: any): json is ortacLocaleTypes.V1_0_0 => {
       let output = false;
       if (typeof json === 'object' &&
           Object.prototype.hasOwnProperty.call(json, 'fileLayout') &&
