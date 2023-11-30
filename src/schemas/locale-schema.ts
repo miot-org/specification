@@ -1,6 +1,6 @@
 import {JSONSchema4} from 'json-schema';
 
-export const V1_0_0: JSONSchema4 = {
+const V1_0_0: JSONSchema4 = {
   title: 'Ortac Locale Object V1_0_0',
   description: 'Full Schema describing the format of the Ortac locale JSON file',
   type: 'object',
@@ -140,4 +140,8 @@ export const V1_0_0: JSONSchema4 = {
       },
     },
   },
+};
+
+export const locale = {
+  V1_0_0,
 };

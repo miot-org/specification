@@ -19,20 +19,23 @@ Includes testing, coverage, coveralls.io, linting, TSDoc and auto creation of a 
 
 - Works with CommonJS and ESM
 - Provides Typescript types
+- Provides JSON Schemas for each file format as js objects
+- Provides TypeScript Type Guard functions for all file formats using JSON Schema checking (ajv)
+- Produces a set of ZIP files which are available on Github for each release version
 
 ## Usage
 ESM:
 ```js
-import {add} from '@ortac/specification';
+import * as ortac from '@ortac/specification';
 
-console.log(add(3, 5)); // 8
+console.log(ortac.schemas.locale.V1_0_0);
 ```
 
 CommonJS:
 ```js
-var lib = require('@ortac/specification');
+var ortac = require('@ortac/specification');
 
-console.log(lib.add(3, -1)); // 2
+console.log(ortac.schemas.locale.V1_0_0);
 ```
 
 ## API Reference

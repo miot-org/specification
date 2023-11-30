@@ -1,15 +1,6 @@
-import {V1_0_0} from './schemas/locale-schema.js';
-import {typeGuards} from './schemas/type-guards.js';
-import {add} from './add.js';
-import {subtract} from './subtract.js';
-
-const schemas = {locale: {V1_0_0}};
+import {locale} from './schemas/locale-schema.js';
 
 export * from './schemas/locale-d.js';
+export {typeGuards} from './schemas/type-guards.js';
 
-export {
-  typeGuards,
-  schemas,
-  add,
-  subtract,
-};
+export const schemas = {locale};
