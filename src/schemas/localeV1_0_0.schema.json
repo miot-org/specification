@@ -1,0 +1,220 @@
+{
+  "$id": "http://ortac.org/locale/v1_0_0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Locale V1_0_0",
+  "description": "Full Schema describing the format of the Ortac locale JSON file",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "ortacVersion",
+    "author",
+    "subject",
+    "locales"
+  ],
+  "properties": {
+    "$schema": {
+      "type":"string",
+      "pattern": "http://ortac.org/locale/v1_0_0"
+    },
+    "ortacVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "author": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "locales": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z]{2,4}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?|/*$": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "parent": {
+              "type": "string",
+              "pattern": "^[a-z]{2,4}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"
+            },
+            "phrases": {
+              "type": "object",
+              "additionalProperties": false,
+              "patternProperties": {
+                "^_.*$": {
+                  "type": "string"
+                }
+              }
+            },
+            "quantities": {
+              "type": "object",
+              "additionalProperties": false,
+              "patternProperties": {
+                "^_qty[a-zA-Z0-9_]+$": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "display": {
+                      "type": "object",
+                      "required": [
+                        "unit"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "unit": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9-./]+$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "displaySpecs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "manufacturer"
+                ],
+                "properties": {
+                  "manufacturer": {
+                    "type": "string"
+                  },
+                  "components": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                      "^.*$": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "specifications": {
+                            "$ref": "#/$defs/specification"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "products": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                      "^.*$": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "models": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "include": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "specifications": {
+                            "$ref": "#/$defs/specification"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "specification": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^.*$$": {
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^_qty.*$": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "display": {
+                  "$ref": "#/$defs/display"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "what": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "decimalPlaces": {
+          "type": "integer"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "errorLow": {
+          "type": "number"
+        },
+        "errorHigh": {
+          "type": "number"
+        },
+        "exponent": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "pattern": "^log$"
+            }
+          ]
+        },
+        "alertLower": {
+          "type": "number"
+        },
+        "warnLower": {
+          "type": "number"
+        },
+        "nominalMin": {
+          "type": "number"
+        },
+        "nominalMax": {
+          "type": "number"
+        },
+        "warnUpper": {
+          "type": "number"
+        },
+        "alertUpper": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

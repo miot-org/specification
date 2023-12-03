@@ -1,0 +1,13 @@
+{
+  "$schema": "http://ortac.org/locale/v1_0_0",
+  "ortacVersion": "45.21.02",
+  "author": "fred",
+  "subject": "slang",
+  "locales": {
+    "en-GB": {
+      "phrases": {
+        "_error": "mess"
+      }
+    }
+  }
+}

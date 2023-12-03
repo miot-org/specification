@@ -19,6 +19,6 @@
     "build/*",
     "prebuild/*",
     "externals",
-    "src/schemas/*-d.ts"
+    "src/schemas/auto-build"
   ]
 }

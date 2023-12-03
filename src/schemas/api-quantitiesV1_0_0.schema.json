@@ -1,0 +1,40 @@
+{
+  "$id": "http://ortac.org/api/quantities/v1_0_0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "API Quantities V1_0_0",
+  "description": "Ortac Resource Service API GET /quantities",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "ortacVersion",
+    "quantities"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "pattern": "http://ortac.org/api/quantities/v1_0_0"
+    },
+    "ortacVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "quantities": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": [
+          {
+            "type": "string",
+            "pattern": "^_qty[a-zA-Z0-9_]+$"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    }
+  }
+}

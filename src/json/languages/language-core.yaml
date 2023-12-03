@@ -1,0 +1,75 @@
+# cspell:dictionaries wordsEn wordsEnGb unitsEn unitsEnGb
+---
+$schema: http://ortac.org/locale/v1_0_0
+ortacVersion: 0.1.1
+author: ortac.org
+subject: Core Language Spec
+locales:
+  en-GB:
+    phrases:
+      _Imperial_Gallons: Gallons
+      _Imp_Gal: Gal
+      _Imperial_Gallons_per_Hour: Gallons per Hour
+      _Imp_Gal/hr: Gal/hr
+  en-US:
+    parent: en-GB
+    phrases:
+      _metre: meter
+      _metres: meters
+      _centimetre: centimeter
+      _centimetres: centimeters
+      _millimetre: millimeter
+      _millimetres: millimeters
+      _kilometre: kilometer
+      _kilometres: kilometers
+      _ t:  metric ton
+      _cubic_metres: cubic meters
+      _litre: liter
+      _litres: liters
+      _cubic_centimetres: cubic centimeters
+      _millilitre: milliliter
+      _US_gallons: gallons
+      _ US_gals: gals
+      _imperial_gallons: imperial gallons
+      _ imp_gals: imp gals
+      _square_metres: square meters
+      _metres_per_second: meters per second
+      _kilometres_per_Hour: kilometers per hour
+      _metres_per_second_squared: meters per second squared
+      _kilometres_per_hour_second: kilometers per hour second
+      _cubic_metres_per_second: cubic meters per second
+      _US_gallons_per_hour: gallons per hour
+      _US_gal/hr: gal/hr
+      _imperial_gallons_per_hour: imperial gallons per hour
+      _imp_gal/hr: imp gal/hr
+      _litres_per_hour: liters per hour
+      _kilograms_per_cubic_metre: kilograms per cubic meter
+      _grams_per_hundred_millilitres: grams per hundred milliliters
+      _grams_per_millilitre: grams per milliliter
+      _moles_per_cubic_metre: moles per cubic meter
+      _moles_per_litre: moles per cubic liter
+      _moles_per_cubic_decimetre: moles per cubic decimeter
+      _newton_metre: newton meter
+      _millimetres_of_mercury: millimeters of mercury
+      _candela_per_square_metre: candela per square meter
+      _square_metres_per_second: square meters per second
+      _henrys: henries
+      _millihenrys: millihenries
+      _microhenrys: microhenries
+      _nanohenrys: nanohenries
+      _lumen_per_square_metre: lumen per square meter
+      _lumens_per_square_metre: lumens per square meter
+      _pound_force_foot: pound-foot
+      _pound_force_feet: pound-feet
+      _ lbf-ft:  lb-ft
+    quantities:
+      _qtyTemperature: {display: {"unit": "fahrenheit"}}
+      _qtyDew_Point: {display: {"unit": "fahrenheit"}}
+      _qtyDepth: {display: {"unit": "foot"}}
+      _qtyHeight: {display: {"unit": "foot"}}
+      _qtyHeave: {display: {"unit": "foot"}}
+      _qtyTorque: {display: {"unit": "lbf-ft"}}
+      _qtyVolume_Used: {display: {"unit": "USGal"}}
+      _qtyMass_Used: {display: {"unit": "poundMass"}}
+      _qtyVolumetric_Flow: {display: {"unit": "USGal/h"}}
+      _qtyMass_Flow: {display: {"unit": "lbs/min"}}

@@ -1,0 +1,1778 @@
+$schema: "http://ortac.org/resources/v1_0_0"
+ortacVersion: 0.1.1
+quantities:
+  _qtyTemperature: 
+    kind: _kndTemperature
+    display: # for display here unit, decimalPlaces, min & max are mandatory, errorLow, errorHigh and exponent are optional
+      unit: celsius
+      decimalPlaces: 1
+      min: 273.15
+      max: 373.15
+      errorLow: 0
+      errorHigh: 2.0e+12 # Hagedorn Temperature
+  _qtyPressure: 
+    kind: _kndPressure
+    display:
+      unit: psi
+      decimalPlaces: 1
+      min: 0
+      max: 1.0e+6
+      errorLow: 0
+  _qtyAbsolute_Humidity: 
+    kind: _kndAbsolute_Humidity
+    display:
+      unit: g/m3
+      decimalPlaces: 1
+      min: 0
+      max: 100
+      errorLow: 0
+      errorHigh: 20000 # of 100% humid air at 500 F 
+  _qtyDew_Point: 
+    kind: _kndTemperature
+    display:
+      unit: celsius
+      decimalPlaces: 1
+      min: 223.15
+      max: 313.15
+      errorLow: 150 # lowest ever air temperature recorded is -89.2C giving a dew point of -100C 
+      errorHigh: 350 # highest every recorded dew point is 35C so 350K is extremely unlikely
+  _qtyRelative_Humidity: 
+    kind: _kndRatio
+    display:
+      unit: percent
+      decimalPlaces: 1
+      min: 0
+      max: 1
+      errorLow: 0
+      errorHigh: 1
+  _qtyDensity: 
+    kind: _kndDensity
+    display:
+      unit: g/mL
+      decimalPlaces: 1
+      min: 0
+      max: 2
+      errorLow: 0
+  _qtyIlluminance:
+    kind: _kndIlluminance
+    display:
+      unit: lux
+      decimalPlaces: 5
+      min: 1.0e-5 # Overcast dark night is 1.0e-4
+      max: 1.0e+7 # Bright sunny day is 1.0e+6
+      exponent: log
+      errorLow: 0
+  _qtySalinity:
+    kind: _kndRatio
+    display:
+      unit: ppt
+      decimalPlaces: 1
+      min: 0
+      max: 0.1
+      errorLow: 0
+      errorHigh: 1
+  _qtyMass_Concentration: 
+    kind: _kndDensity
+    display:
+      unit: g/mL
+      decimalPlaces: 1
+      min: 0
+      max: 1
+      errorLow: 0
+  _qtyMolar_Concentration: 
+    kind: _kndMolar_Concentration
+    display:
+      unit: mol/L
+      decimalPlaces: 1
+      min: 0
+      max: 0.5
+      errorLow: 0
+  _qtyMass_Volume_Concentration:
+    kind: _kndRatio # a weird measurement being g/mL but expressed as a percentage ie. 10g in 150mL is 6.7% 
+    display:
+      unit: percent
+      decimalPlaces: 1
+      min: 0
+      max: 1
+      errorLow: 0
+  _qtyContamination: 
+    kind: _kndRatio
+    display:
+      unit: ppm
+      decimalPlaces: 0
+      min: 0
+      max: 5.0e-4
+      errorLow: 0
+      errorHigh: 1
+  _qtyAcid_Number: 
+    kind: _kndRatio
+    display:
+      unit: AN
+      decimalPlaces: 1
+      min: 0
+      max: 1.0e-3
+      errorLow: 0
+      errorHigh: 1
+  _qtyTotal_Acid_Number: 
+    kind: _kndRatio
+    display:
+      unit: AN
+      decimalPlaces: 2
+      min: 0
+      max: 1.0e-3
+      errorLow: 0
+      errorHigh: 1
+  _qtyTotal_Base_Number: 
+    kind: _kndRatio
+    display:
+      unit: AN
+      decimalPlaces: 2
+      min: 0
+      max: 1.0e-3
+      errorLow: 0
+      errorHigh: 1
+  _qtyDepth: 
+    kind: _kndLength
+    display:
+      unit: m
+      decimalPlaces: 1
+      min: 0
+      max: 1000
+      errorLow: 0
+      errorHigh: 11500 # deepest known ocean depth is Challenger Deep in the Mariana Trench 10,935 meters 
+  _qtyHeight: 
+    kind: _kndLength
+    display:
+      unit: m
+      decimalPlaces: 1
+      min: 0
+      max: 350 # highest bridge in the world is 336m, highest building 828m
+      errorLow: 0
+      errorHigh: 20000
+  _qtyHeave: 
+    kind: _kndLength
+    display:
+      unit: m
+      decimalPlaces: 2
+      min: -30
+      max: 30
+      errorLow: -1000 # highest every wave recorded at 524m
+      errorHigh: 1000
+  _qtyWater_Speed: 
+    kind: _kndSpeed
+    display:
+      unit: kn
+      decimalPlaces: 1
+      min: 0
+      max: 25 # 25m/s is 48.5 Knots
+      errorLow: 0
+      errorHigh: 100 # 100m/s is 194 Knots
+  _qtyGround_Speed: 
+    kind: _kndSpeed
+    display:
+      unit: kn
+      decimalPlaces: 1
+      min: 0
+      max: 25 # 25m/s is 48.5 Knots
+      errorLow: 0
+      errorHigh: 100 # 100m/s is 194 Knots
+  _qtyXTE: 
+    kind: _kndLength # +ve is to right of track
+    display:
+      unit: m
+      decimalPlaces: 1
+      min: -200
+      max: 200
+      errorLow: -25000000
+      errorHigh: 25000000 # half the circumference of the world
+  _qtyDistance: 
+    kind: _kndLength # +ve is to right of track
+    display:
+      unit: m
+      decimalPlaces: 1
+      min: 0
+      max: 1.0e+6 # arbitrary - is about 540Nm
+      errorLow: 0
+      errorHigh: 50.0e+6 # more than the circumference of the world  
+  _qtyRoll: 
+    kind: _kndAngle # +ve is roll to starboard
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: -1 # 1 rad is approx 57°
+      max: 1
+      errorLow: -3.1416
+      errorHigh: 3.1416
+  _qtyPitch: 
+    kind: _kndAngle # +ve is bow up
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: -1 # 1 rad is approx 57°
+      max: 1
+      errorLow: -3.1416
+      errorHigh: 3.1416
+  _qtyYaw: 
+    kind: _kndAngle # +ve is starboard
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: -1 # 1 rad is approx 57°
+      max: 1
+      errorLow: -3.1416
+      errorHigh: 3.1416
+  _qtyRoll_Rate: 
+    kind: _kndRotation
+    display:
+      unit: deg/s
+      decimalPlaces: 0
+      min: 0
+      max: 1 # 57°/s
+      errorLow: 0
+      errorHigh: 3 # 170°/s
+  _qtyPitch_Rate: 
+    kind: _kndRotation
+    display:
+      unit: deg/s
+      decimalPlaces: 0
+      min: 0
+      max: 1 # 57°/s
+      errorLow: 0
+      errorHigh: 3 # 170°/s
+  _qtyYaw_Rate: 
+    kind: _kndRotation
+    display:
+      unit: deg/s
+      decimalPlaces: 0
+      min: 0
+      max: 1 # 57°/s
+      errorLow: 0
+      errorHigh: 3 # 170°/s
+  _qtyRate_of_Turn: 
+    kind: _kndRotation
+    display:
+      unit: deg/s
+      decimalPlaces: 0
+      min: 0
+      max: 1 # 57°/s
+      errorLow: 0
+      errorHigh: 3 # 170°/s
+  _qtyLeeway: 
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 0
+      min: -0.5
+      max: 0.5
+      errorLow: -3.1416
+      errorHigh: +3.1416
+  _qtyBlade_Pitch:
+    kind: _kndRatio
+    display:
+      unit: percent
+      decimalPlaces: 0
+      min: -1.2
+      max: 1.2
+      errorLow: -2
+      errorHigh: 2
+  _qtyRevolutions: # this is a counter of total revolutions
+    kind: _kndAngle
+    display:
+      unit: millionRotations
+      decimalPlaces: 1
+      min: 0
+      max: 6.0e+9 # approx 955 million rotations
+      errorLow: 0
+  _qtyRevolution_Speed: 
+    kind: _kndRotation
+    display:
+      unit: rpm
+      decimalPlaces: 0
+      min: 0
+      max: 750 # 750 rad/s = 7200rpm
+      errorLow: 0
+      errorHigh: 5000 # # 5000rad/s = 47,700rpm ()  
+  _qtyLoad_Factor: 
+    kind: _kndRatio
+    display:
+      unit: percent
+      decimalPlaces: 1
+      min: 0
+      max: 1.5 # load factor could be more than 100% of rated
+      errorLow: 0
+      errorHigh: 2
+  _qtyTorque: 
+    kind: _kndTorque
+    display:
+      unit: Nm
+      decimalPlaces: 0
+      min: 0
+      max: 10000 # output of large yacht diesel engine
+      errorLow: 0
+      errorHigh: 1.0e+6 
+  _qtyTrim: 
+    kind: _kndRatio # of drive/outboard
+    display:
+      unit: percent
+      decimalPlaces: 0
+      min: 0
+      max: 1
+      errorLow: 0
+      errorHigh: 1
+  _qtyThrust_Angle: 
+    kind: _kndAngle #steerable drives 0 is straight ahead +ve steers to starboard
+    display:
+      unit: degrees
+      decimalPlaces: 0
+      min: -3.1415926535898 # -180°
+      max: 3.1415926535898 # +180°
+      errorLow: -3.1416
+      errorHigh: 3.1416
+  _qtyVolume_Used: 
+    kind: _kndVolume
+    display:
+      unit: Ltr
+      decimalPlaces: 1
+      min: 0
+      max: 5000
+      errorLow: 0
+  _qtyMass_Used: 
+    kind: _kndMass
+    display:
+      unit: kg
+      decimalPlaces: 0
+      min: 0
+      max: 100000
+      errorLow: 0
+  _qtyVolumetric_Flow: 
+    kind: _kndVolumetric_Flow
+    display:
+      unit: L/h
+      decimalPlaces: 1
+      min: 0
+      max: 1.4e-4 # = 504L/hr which is about 2,000kW output
+      errorLow: 0
+      errorHigh: 1.0e-2 # = 36,000 L/h which is beyond what super yachts burn
+  _qtyMass_Flow: 
+    kind: _kndMass_Flow
+    display:
+      unit: kg/h
+      decimalPlaces: 1
+      min: 0
+      max: 0.14 # 504 kg/h
+      errorLow: 0
+      errorHigh: 10 # = 36,000 kg/h
+  _qtyVolumetric_Capacity: 
+    kind: _kndVolume
+    display:
+      unit: Ltr
+      decimalPlaces: 0
+      min: 0
+      max: 10 # 10,000 Ltr
+      errorLow: 0
+      errorHigh: 10000 # 10,000,000 Ltr - largest super yacht is about 1,000,000 Ltr
+  _qtyLevel: 
+    kind: _kndRatio # eg. of fuel in a tank
+    display:
+      unit: percent
+      decimalPlaces: 1
+      min: 0
+      max: 1
+      errorLow: 0
+      errorHigh: 1
+  _qtyVoltage: 
+    kind: _kndVoltage
+    display:
+      unit: volt
+      decimalPlaces: 1
+      min: 0
+      max: 250
+      errorLow: 0
+      errorHigh: 500
+  _qtyElectric_Current: 
+    kind: _kndElectric_Current
+    display:
+      unit: amp
+      decimalPlaces: 1
+      min: -100
+      max: 400
+      errorLow: -10000
+      errorHigh: 10000
+  _qtyPower: 
+    kind: _kndPower
+    display:
+      unit: Watt
+      decimalPlaces: 1
+      min: 0
+      max: 10000
+      errorLow: 0
+      errorHigh: 100000
+  _qtyPower_Factor: 
+    kind: _kndRatio
+    display:
+      unit: ratio
+      decimalPlaces: 2
+      min: 0
+      max: 1
+      errorLow: 0
+      errorHigh: 1
+  _qtyState_of_Health: 
+    kind: _kndRatio # eg of a battery %
+    display:
+      unit: percent
+      decimalPlaces: 1
+      min: 0
+      max: 1
+      errorLow: 0
+      errorHigh: 1
+  _qtyState_of_Charge: 
+    kind: _kndRatio
+    display:
+      unit: percent
+      decimalPlaces: 1
+      min: 0
+      max: 1
+      errorLow: 0
+      errorHigh: 1
+  _qtyFrequency: 
+    kind: _kndFrequency
+    display:
+      unit: kHz
+      decimalPlaces: 1
+      min: 1
+      max: 1.0e+9
+      errorLow: 0.1
+      errorHigh: 1.0e+12
+      exponent: log
+  _qtyKinematic_Viscosity: 
+    kind: _kndKinematic_Viscosity
+    display:
+      unit: centistoke
+      decimalPlaces: 1
+      min: 0
+      max: 5000.0e-6 # Oil ranges from 4e-6 to 3600e-6 , Water is 1e-6, Kerosene is 2.7e-6, honey is 73e-6, castor oil is 300e-6
+      errorLow: 0
+      errorHigh: 100000.0e-6
+  _qtyDynamic_Viscosity:
+    kind: _kndDynamic_Viscosity
+    display:
+      unit: centipoise
+      decimalPlaces: 0
+      min: 0
+      max: 10 # water 0.0089, linseed oil 0.033, castor oil 0.65
+      errorLow: 0
+      errorHigh: 200
+  _qtyDisplacement: 
+    kind: _kndVolume  
+    display:
+      unit: Ltr
+      decimalPlaces: 1
+      min: 0
+      max: 500
+      errorLow: 0
+  _qtyGround_Course_Magnetic: 
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: 0
+      max: 6.2831853071796
+      errorLow: 0
+      errorHigh: 6.2832
+  _qtyGround_Course_True: 
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: 0
+      max: 6.2831853071796
+      errorLow: 0
+      errorHigh: 6.2832
+  _qtyDirection_True: 
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: 0
+      max: 6.2831853071796
+      errorLow: 0
+      errorHigh: 6.2832
+  _qtyDirection_Magnetic: 
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: 0
+      max: 6.2831853071796
+      errorLow: 0
+      errorHigh: 6.2832
+  _qtyVariation: # +ve when magnetic north is east of true north
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 1
+      min: -3.1415926535898
+      max: 3.1415926535898
+      errorLow: -3.1416
+      errorHigh: 3.1416
+  _qtyLongitude: # +ve is east
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 5
+      min: -3.1415926535898
+      max: 3.1415926535898
+      errorLow: -3.1416
+      errorHigh: 3.1416
+  _qtyLatitude: # +ve is north
+    kind: _kndAngle
+    display:
+      unit: degrees
+      decimalPlaces: 5
+      min: -1.5707963267949
+      max: 1.5707963267949
+      errorLow: -1.5708
+      errorHigh: 1.5708        
+  _qtyICI95: 
+    kind: _kndAcceleration # (Impact Count Index)
+    display:
+      unit: G
+      decimalPlaces: 1
+      min: 0
+      max: 100 # 10 G
+      errorLow: 0
+      errorHigh: 500
+  _qtyICI99: 
+    kind: _kndAcceleration
+    display:
+      unit: G
+      decimalPlaces: 1
+      min: 0
+      max: 100 # 10 G
+      errorLow: 0
+      errorHigh: 500
+  _qtyICIpeak: 
+    kind: _kndAcceleration
+    display:
+      unit: G
+      decimalPlaces: 1
+      min: 0
+      max: 200 # 10 G
+      errorLow: 0
+      errorHigh: 500
+  _qtyRuntime: 
+    kind: _kndTime_Interval
+    display:
+      unit: hour
+      decimalPlaces: 1
+      min: 0
+      max: 4.0e+7 # 11,100 hours 
+      errorLow: 0
+      errorHigh: 1.0e+9 # 280,000 hours 31.7 years
+  _qtyLoudness: 
+    kind: _kndNoise # sound
+    display:
+      unit: dBA
+      decimalPlaces: 1
+      min: 0
+      max: 150
+      errorLow: 0.1
+      errorHigh: 196 # maximum possible dB in air is 194dB. At 2500Hz for maximum dBA weighting gives 195.3
+kinds:
+  # Note: these are listed in the order they appear in `The International System of Units (SI) (9th edition 2019)`
+  # Base SI units (Table 3):
+  _kndTime_Interval:
+    symbol: _t
+    siUnit: second
+    conversion:
+    - unit: second
+      name: _second
+      namePl: _seconds
+      suffix: _ s
+    - unit: min
+      name: _minute
+      namePl: _minutes
+      suffix: _ mins
+      divisor: 60
+    - unit: hour
+      name: _hour
+      namePl: _hours
+      suffix: _ hrs
+      divisor: 3600
+    - unit: day
+      name: _day
+      namePl: _days
+      suffix: _ days
+      divisor: 86400
+  _kndLength:
+    symbol: _L
+    siUnit: m
+    conversion:
+    - unit: m
+      name: _metre
+      namePl: _metres
+      suffix: _ m
+    - unit: cm
+      name: _centimetre
+      namePl: _centimetres
+      suffix: _ cm
+      factor: 100
+    - unit: mm
+      name: _millimetre
+      namePl: _millimetres
+      suffix: _ mm
+      factor: 1000
+    - unit: km
+      name: _kilometre
+      namePl: _kilometres
+      suffix: _ km
+      divisor: 1000
+    - unit: Nm
+      name: _nautical_mile
+      namePl: _nautical_miles
+      suffix: _ Nm
+      divisor: 1852 
+    - unit: mile
+      name: _statute_mile
+      namePl: _statute_miles
+      suffix: _ miles
+      divisor: 1609.34 
+    - unit: inch
+      name: _inch
+      namePl: _inches
+      suffix: _″
+      divisor: 0.0254
+    - unit: foot
+      name: _foot
+      namePl: _feet
+      suffix: _′
+      divisor: 0.3048 
+    - unit: yard
+      name: _yard
+      namePl: _yards
+      suffix: _ yd
+      divisor: 0.9144
+    - unit: fathom
+      name: _fathom
+      namePl: _fathoms
+      suffix: _ fathoms
+      divisor: 1.8288
+    - unit: shot
+      name: _shot
+      namePl: _shots
+      suffix: _ shots
+      divisor: 27.432
+    - unit: cable
+      name: _cable
+      namePl: _cables
+      suffix: _ cables
+      divisor: 185.2
+  _kndMass:
+    symbol: _m
+    siUnit: kg
+    conversion:
+    - unit: kg
+      name: _kilogram
+      namePl: _kilograms
+      suffix: _ kg
+    - unit: g
+      name: _gram
+      namePl: _grams
+      suffix: _ g
+      factor: 1000
+    - unit: poundMass
+      name: _pound
+      namePl: _pounds
+      suffix: _ lbs
+      divisor: 0.45359237 # per 1959 definition
+    - unit: metricTon
+      name: _metric_ton
+      namePl: _metric_tons
+      suffix: _ t
+      divisor: 1000
+  _kndElectric_Current:
+    symbol: _I
+    siUnit: amp
+    conversion:
+    - unit: amp
+      name: _amp
+      namePl: _amps
+      suffix: _ A
+    - unit: milliamp
+      name: _milliamp
+      namePl: _milliamps
+      suffix: _ mA
+      factor: 1000
+  _kndTemperature:
+    symbol: _T
+    siUnit: kelvin
+    conversion:
+    - unit: kelvin
+      name: _kelvin # named after Lord Kelvin
+      namePl: _kelvin
+      suffix: _ K
+    - unit: celsius
+      name: _degree_Celsius # named after Anders Celsius - is capitalised per Table 4 of International System of Units (SI) 
+      namePl: _degrees_Celsius
+      suffix: _°C
+      offset: -273.15
+    - unit: fahrenheit
+      name: _degree_Fahrenheit # named after Daniel Gabriel Fahrenheit - customarily capitalised as Fahrenheit is not the unit (degree), it is a classifier of the unit
+      namePl: _degrees_Fahrenheit
+      suffix: _°F
+      factor: 1.8
+      offset: -459.67
+  _kndLuminous_Intensity:
+    symbol: _Iᵥ
+    siUnit: candela
+    conversion:
+    - unit: candela
+      name: _candela
+      namePl: _candelas
+      suffix: _ cd
+  # Derived SI units (Table 4):
+  _kndAngle:
+    symbol: _∠
+    siUnit: radian
+    conversion:
+    - unit: radian
+      name: _radian
+      namePl: _radians
+      suffix: _ rad
+    - unit: degrees
+      name: _degree
+      namePl: _degrees
+      suffix: _°
+      factor: 57.2957795130821 # 360/2π
+    - unit: rotations
+      name: _rotation
+      namePl: _rotations
+      suffix: _ R
+      divisor: 6.2831853071796 # 2π
+    - unit: millionRotations
+      name: _million_rotations
+      namePl: _million_rotations
+      suffix: _ MR
+      divisor: 6.2831853071796e+6
+  _kndFrequency:
+    symbol: _f
+    siUnit: Hz
+    conversion:
+    - unit: Hz
+      name: _hertz # named after Heinrich Hertz
+      namePl: _hertz
+      suffix: _ Hz
+    - unit: kHz
+      name: _kilohertz
+      namePl: _kilohertz
+      suffix: _ kHz
+      divisor: 1.0e+3
+    - unit: MHz
+      name: _megahertz
+      namePl: _megahertz
+      suffix: _ MHz
+      divisor: 1.0e+6
+  _kndForce:
+    symbol: _F
+    siUnit: Newton
+    conversion:
+    - unit: Newton # named after Sir Isaac Newton
+      name: _newton
+      namePl: _newtons
+      suffix: _ N
+    - unit: kgf
+      name: _kilogram_force
+      namePl: _kilograms_force
+      suffix: _ kgf
+      divisor: 9.80665  
+    - unit: lbf
+      name: _pound-force # with `-` per collins dictionary 29/9/2023
+      namePl: _pounds-force
+      suffix: _ lbf
+      divisor: 4.448221615 # 9.80665 * 0.45359237 per 1959 definition lb/kg
+  _kndPressure:
+    symbol: _P
+    siUnit: pascal
+    conversion:
+    - unit: pascal # = 1 Newton per square metre
+      name: _pascal # named after Blaise Pascal
+      namePl: _pascals
+      suffix: _ Pa
+    - unit: psi
+      name: _pound_per_square_inch
+      namePl: _pounds_per_square_inch
+      suffix: _ psi
+      divisor: 6894.413789 # 9.80665 * 0.45359237 per 1959 definition lb/kg * 1000² / 25.4²
+    - unit: kPa
+      name: _kilopascal
+      namePl: _kilopascals
+      suffix: _ kPa
+      divisor: 1000 
+    - unit: hPa
+      name: _hectopascal
+      namePl: _hectopascals
+      suffix: _ hPa
+      divisor: 100 
+    - unit: uPa
+      name: _micropascal
+      namePl: _micropascals
+      suffix: _ μPa
+      factor: 1000000
+    - unit: bar
+      name: _bar
+      namePl: _bars
+      suffix: _ bar
+      divisor: 100000 
+    - unit: millibar
+      name: _millibar
+      namePl: _millibars
+      suffix: _ mbar
+      divisor: 100 
+    - unit: Hg
+      name: _inch_of_mercury
+      namePl: _inches_of_mercury
+      suffix: _ in Hg
+      divisor: 3386.38642 # 133.3223 * 25.4
+    - unit: mmHg
+      name: _millimetre_of_mercury
+      namePl: _millimetres_of_mercury
+      suffix: _ mm Hg
+      divisor: 133.3223 # per definition
+    - unit: atmosphere
+      name: _atmosphere
+      namePl: _atmospheres
+      suffix: _ atm
+      divisor: 101325 
+  _kndEnergy:
+    symbol: _E
+    siUnit: joule
+    conversion:
+    - unit: joule
+      name: _joule # named after James Prescott Joule
+      namePl: _joules
+      suffix: _ J
+    - unit: ft-lbf
+      name: _foot-pound_force # with `-` per wikipedia 29/9/2023
+      namePl: _foot-pounds_force
+      suffix: _ ft-lbf
+      factor: 0.73756217557
+    - unit: Btu
+      name: _British_thermal_unit # British is a proper noun so is capitalised
+      namePl: _British_thermal_units
+      suffix: _ Btu
+      divisor: 1055.06
+    - unit: megajoule
+      name: _megajoule
+      namePl: _megajoules
+      suffix: _ MJ
+      factor: 1.0e-6
+    - unit: kWh
+      name: _kilowatt-hour # with `-` per Merriam-Webster 29/9/2023
+      namePl: _kilowatt-hours
+      suffix: _ kWh
+      divisor: 3600 # 60 * 60
+    - unit: calorie
+      name: _calorie
+      namePl: _calories
+      suffix: _ cal
+      divisor: 4.1868
+    - unit: kcal
+      name: _kilocalorie
+      namePl: _kilocalories
+      suffix: _ kcal
+      divisor: 4186.8
+  _kndPower:
+    symbol: _P
+    siUnit: Watt
+    conversion:
+    - unit: Watt
+      name: _watt # named after James Watt
+      namePl: _watts
+      suffix: _ W
+    - unit: milliwatt
+      name: _milliwatt
+      namePl: _milliwatts
+      suffix: _ mW
+      factor: 1000
+    - unit: J/s
+      name: _joule_per_second # named after James Prescott Joule
+      namePl: _joules_per_second
+      suffix: _ J/s
+      factor: 1.0
+    - unit: kW
+      name: _kilowatt
+      namePl: _kilowatts
+      suffix: _ kW
+      divisor: 1000 
+    - unit: hp
+      name: _horsepower
+      namePl: _horsepower
+      suffix: _ hp
+      divisor: 745.6998716 # 550 * 0.3048 * 9.80665 * 0.45359237
+    - unit: PS
+      name: _metric_horsepower
+      namePl: _metric_horsepower
+      suffix: _ PS
+      factor: 735.49875 # 75 * 9.80665
+    - unit: dBm
+      name: _decibel-milliwatts # with '-' per wikipedia 29/9/2023
+      namePl: _decibel-milliwatts
+      suffix: _ dBm
+      factor: 1000
+      logFactor: 10
+    - unit: Btu/h
+      name: _British_thermal_unit_per_hour # British is a proper noun so is capitalised 
+      namePl: _British_thermal_units_per_hour
+      suffix: _ Btu/h
+      divisor: 1055.06
+  _kndCharge:
+    symbol: _Q
+    siUnit: coulomb
+    conversion:
+    - unit: coulomb # equivalent to 1 Amp Second
+      name: _coulomb # named after Charles-Augustin de Coulomb
+      namePl: _coulombs
+      suffix: _ C
+    - unit: ampHour
+      name: _amp-hour # with `-` per wikipedia 29/9/2023
+      namePl: _amp-hours
+      suffix: _ Ah
+      divisor: 3600 # 60 * 60
+    - unit: milliAmpHour
+      name: _milliamp-hour
+      namePl: _milliamp-hours
+      suffix: _ mAh
+      divisor: 3.6 # 60 * 60 / 1000
+  _kndVoltage:
+    symbol: _V
+    siUnit: volt
+    conversion:
+    - unit: volt
+      name: _volt # named after Alessandro Volta
+      namePl: _volts
+      suffix: _ V
+    - unit: millivolt
+      name: _millivolt
+      namePl: _millivolts
+      suffix: _ mV
+      factor: 1000
+  _kndCapacitance:
+    symbol: _F
+    siUnit: farad
+    conversion:
+    - unit: farad
+      name: _farad # named after Michael Faraday
+      namePl: _farads
+      suffix: _ F
+    - unit: microfarad
+      name: _microfarad
+      namePl: _microfarads
+      suffix: _ μF
+      factor: 1.0e+6
+    - unit: picofarad
+      name: _picofarad
+      namePl: _picofarads
+      suffix: _ pF
+      factor: 1.0e+12
+  _kndResistance:
+    symbol: _R
+    siUnit: ohm
+    conversion:
+    - unit: ohm
+      name: _ohm # named after Georg Simon Ohm
+      namePl: _ohms
+      suffix: _ Ω
+    - unit: kiloohm
+      name: _kiloohm # named after Georg Simon Ohm
+      namePl: _kiloohms
+      suffix: _ kΩ
+      factor: 1.0e-3
+    - unit: megaohm
+      name: _megaohm # named after Georg Simon Ohm
+      namePl: _megaohms
+      suffix: _ MΩ
+      factor: 1.0e-6
+  _kndConductance:
+    symbol: _G
+    siUnit: siemen
+    conversion:
+    - unit: siemen
+      name: _siemens # named after Ernst Werner von Siemens 
+      namePl: _siemens # siemens is used for both singular and plural
+      suffix: _ S
+  _kndMagnetic_Flux_Density:
+    symbol: _B
+    siUnit: tesla
+    conversion:
+    - unit: tesla
+      name: _tesla # named after Nikola Tesla
+      namePl: _teslas
+      suffix: _ T
+    - unit: nanotesla
+      name: _nanotesla
+      namePl: _nanoteslas
+      suffix: _ nT
+      factor: 1.0e+9
+    - unit: gauss
+      name: _gauss # named after Carl Friedrich Gauss
+      namePl: _gauss
+      suffix: _ G
+      factor: 10000
+  _kndInductance:
+    symbol: _H
+    siUnit: henry
+    conversion:
+    - unit: henry
+      name: _henry # named after Joseph Henry
+      namePl: _henrys
+      suffix: _ H
+    - unit: millihenry
+      name: _millihenry
+      namePl: _millihenrys
+      suffix: _ mH
+      factor: 1.0e+3
+    - unit: microhenry
+      name: _microhenry
+      namePl: _microhenrys
+      suffix: _ μH
+      factor: 1.0e+6
+    - unit: nanohenry
+      name: _nanohenry
+      namePl: _nanohenrys
+      suffix: _ nH
+      factor: 1.0e+9
+  _kndIlluminance:
+    symbol: _Eᵥ
+    siUnit: lux # = 1 Lumen/m²
+    conversion:
+    - unit: lux
+      name: _lux
+      namePl: _lux # lux is both singular and plural form
+      suffix: _ lx
+    - unit: lm/m2
+      name: _lumen_per_square_metre
+      namePl: _lumens_per_square_metre
+      suffix: _ lm/m²
+      factor: 1.0
+  # Coherent derived SI units (Table 5):
+  _kndArea:
+    symbol: _A
+    siUnit: m2
+    conversion:
+    - unit: m2
+      name: _square_metre
+      namePl: _square_metres
+      suffix: _ m²
+    - unit: ft2
+      name: _square_foot
+      namePl: _square_feet
+      suffix: _ ft²
+      factor: 10.7639
+    - unit: mile2
+      name: _square_mile
+      namePl: _square_miles
+      suffix: _ mile²
+      divisor: 2.59e+6
+  _kndVolume:
+    symbol: _V
+    siUnit: m3
+    conversion:
+    - unit: m3
+      name: _cubic_metre
+      namePl: _cubic_metres
+      suffix: _ m³
+    - unit: Ltr
+      name: _litre
+      namePl: _litres
+      suffix: _ L # capitalised even though litre is not a proper noun to prevent confusion with the number 1 per The International System of Units (SI)
+      factor: 1.0e+3
+    - unit: CC
+      name: _cubic_centimetre
+      namePl: _cubic_centimetres
+      suffix: _ cm³
+      factor: 1.0e+6
+    - unit: mL
+      name: _millilitre
+      namePl: _millilitres
+      suffix: _ mL
+      factor: 1.0e+6
+    - unit: cubicInch
+      name: _cubic_inch
+      namePl: _cubic_inches
+      suffix: _ cu in
+      factor: 61023.74409 # 1000³/25.4³
+    - unit: USGal
+      name: _US_gallon
+      namePl: _US_gallons
+      suffix: _ US_gals
+      factor: 264.1720524 # 231 cubic inches => 1000³ / (25.4³ * 231)
+    - unit: ImpGal
+      name: _imperial_gallon
+      namePl: _imperial_gallons
+      suffix: _ imp_gals
+      factor: 219.9692483 # 1 pint = 568.26125 ml (exactly) => 1e6 / (568.26125 * 8)
+  _kndSpeed:
+    symbol: _v
+    siUnit: m/s
+    conversion:
+    - unit: m/s
+      name: _metre_per_second
+      namePl: _metres_per_second
+      suffix: _ m/s
+    - unit: kn
+      name: _knot
+      namePl: _knots
+      suffix: _ kn
+      factor: 1.94384
+    - unit: mph
+      name: _mile_per_hour
+      namePl: _miles_per_hour
+      suffix: _ mph
+      factor: 2.2369362921
+    - unit: kph
+      name: _kilometre_per_hour
+      namePl: _kilometres_per_hour
+      suffix: _ km/h
+      factor: 3.6
+  _kndAcceleration:
+    symbol: _a
+    siUnit: m/s2
+    conversion:
+    - unit: m/s2
+      name: _metre_per_second_squared
+      namePl: _metres_per_second_squared
+      suffix: _ m/s²
+    - unit: kn/s
+      name: _knot_per_second
+      namePl: _knots_per_second
+      suffix: _ kn/s
+      factor: 1.94384
+    - unit: mph/s
+      name: _mile_per_hour_per_second
+      namePl: _miles_per_hour_per_second
+      suffix: _ mph/s
+      factor: 2.2369362921
+    - unit: kph/s
+      name: _kilometre_per_hour_per_second
+      namePl: _kilometres_per_hour_per_second
+      suffix: _ km/hs
+      factor: 3.6
+    - unit: ft/s2
+      name: _foot_per_second_squared
+      namePl: _feet_per_second_squared
+      suffix: _ ft/s²
+      factor: 3.280839895 # 1000 mm/m ÷ (25.4 mm/inch * 12 inches/foot)
+    - unit: G
+      name: _g-force
+      namePl: _g-force
+      suffix: _ 𝑔 # NB italic g to differentiate from g for grams
+      divisor: 9.80665
+  _kndDensity:
+    symbol: _ρ
+    siUnit: kg/m3
+    conversion:
+    - unit: kg/m3
+      name: _kilogram_per_cubic_metre
+      namePl: _kilograms_per_cubic_metre
+      suffix: _ kg/m³
+    - unit: g/hmL
+      name: _gram_per_hundred_millilitres
+      namePl: _grams_per_hundred_millilitres
+      suffix: _ g/(100mL)
+      factor: 0.1
+    - unit: g/L
+      name: _gram_litre
+      namePl: _grams_per_litre
+      suffix: _ g/L
+      factor: 1
+    - unit: g/mL
+      name: _gram_per_millilitre
+      namePl: _grams_per_millilitre
+      suffix: _ g/mL
+      factor: 0.001
+  _kndMolar_Concentration:
+    symbol: _c
+    siUnit: mol/m3
+    conversion:
+    - unit: mol/m3
+      name: _mole_per_cubic_metre
+      namePl: _moles_per_cubic_metre
+      suffix: _ mol/m³
+    - unit: mol/L
+      name: _mole_per_litre
+      namePl: _moles_per_litre
+      suffix: _ mol/L
+      factor: 1000
+    - unit: mol/dm3
+      name: _mole_per_cubic_decimetre
+      namePl: _moles_per_cubic_decimetre
+      suffix: _ mol/dm³
+      factor: 1000
+  _kndLuminance:
+    symbol: _Lᵥ
+    siUnit: cd/m2
+    conversion:
+    - unit: cd/m2
+      name: _candela_per_square_metre
+      namePl: _candelas_per_square_metre
+      suffix: _ cd/m²
+  # SI Coherent derived units (Table 6):
+  _kndTorque:
+    symbol: _τ
+    siUnit: J/rad
+    conversion:
+    - unit: J/rad
+      name: _joule_per_radian
+      namePl: _joules_per_radian
+      suffix: _ J/rad
+    - unit: Nm
+      name: _newton_metre
+      namePl: _newton_metres
+      suffix: _ Nm
+      factor: 1.0
+    - unit: lbf-ft
+      name: _pound_force_foot
+      namePl: _pound_force_feet
+      suffix: _ lbf-ft
+      divisor: 1.355818935 # 9.80665 m/s² * 0.45359237 kg/lb * 0.3048 m/ft
+  _kndRotation: # also covers rotational speed and angular frequency
+    symbol: _ν
+    siUnit: rad/s
+    conversion:
+    - unit: rad/s
+      name: _radian_per_second
+      namePl: _radians_per_second
+      suffix: _ rad/s
+    - unit: deg/s
+      name: _degree_per_second
+      namePl: _degrees_per_second
+      suffix: _ deg/s
+      factor: 57.2957795130821 # 360/2π
+    - unit: rpm
+      name: _revolution_per_minute
+      namePl: _revolutions_per_minute
+      suffix: _ rpm
+      factor: 9.54929658551369 # 60/2π
+  _kndAngular_Acceleration:
+    symbol: _a
+    siUnit: rad/s2
+    conversion:
+    - unit: rad/s2
+      name: _radian_per_second_squared
+      namePl: _radians_per_second_squared
+      suffix: _ rad/s²
+    - unit: deg/s2
+      name: _degree_per_second_squared
+      namePl: _degrees_per_second_squared
+      suffix: _ deg/s²
+      factor: 57.2957795130821 # 360/2π
+  # Other units:
+  _kndVolumetric_Flow:
+    symbol: _Q
+    siUnit: m3/s
+    conversion:
+    - unit: m3/s
+      name: _cubic_metre_per_second
+      namePl: _cubic_metres_per_second
+      suffix: _ m³/s
+    - unit: USGal/h
+      name: _US_gallon_per_hour
+      namePl: _US_gallons_per_hour
+      suffix: _ US_gal/h
+      factor: 951019.3885 # (60 * 60) * 1000³ / (25.4³ * 231)
+    - unit: ImpGal/h
+      name: _imperial_gallon_per_hour
+      namePl: _imperial_gallons_per_hour
+      suffix: _ imp_gal/h
+      factor: 791889.2939 # 1 pint = 568.26125 ml (exactly) => (60 * 60) * 1e6 / (568.26125 * 8)
+    - unit: L/h
+      name: _litre_per_hour
+      namePl: _litres_per_hour
+      suffix: _ L/h
+      factor: 3.6e+6 # (60 * 60) * 1.0e-3
+  _kndMass_Flow:
+    symbol: _ṁ
+    siUnit: kg/s
+    conversion:
+    - unit: kg/s
+      name: _kilogram_per_second
+      namePl: _kilograms_per_second
+      suffix: _ kg/s
+    - unit: lbs/min
+      name: _pound_per_minute
+      namePl: _pounds_per_minute
+      suffix: _ lbs/min
+      factor: 132.2773573 # 60 * (1 / 0.45359237) (1959 definition)
+    - unit: kg/h
+      name: _kilogram_per_hour
+      namePl: _kilograms_per_hour
+      suffix: _ kg/h
+      factor: 3600 
+  _kndPressure_Rate:
+    symbol: _R
+    siUnit: Pa/s
+    conversion:
+    - unit: Pa/s
+      name: _pascal_per_second
+      namePl: _pascals_per_second
+      suffix: _ Pa/s
+    - unit: psi/s
+      name: _pound_per_square_inch_per_second
+      namePl: _pounds_per_square_inch_per_second
+      suffix: _ psi/s
+      divisor: 6894.413789 # 9.80665 * 0.45359237 per 1959 definition lb/kg * 1000² / 25.4²
+    - unit: hPa/h
+      name: _hectopascal_per_hour
+      namePl: _hectopascals_per_hour
+      suffix: _ hPa/h
+      factor: 36 # (60 * 60) / 100
+    - unit: mbar/h
+      name: _millibar_per_hour
+      namePl: _millibars_per_hour
+      suffix: _ mbar/h
+      factor: 36 # (60 * 60) / 100
+  _kndKinematic_Viscosity:
+    symbol: _μ
+    siUnit: m2/s
+    conversion:
+    - unit: m2/s
+      name: _square_metre_per_second
+      namePl: _square_metres_per_second
+      suffix: _ m²/s
+    - unit: mm2/s
+      name: _square_millimetre_per_second
+      namePl: _square_millimetres_per_second
+      suffix: _ mm²/s
+      factor: 1.0e+6
+    - unit: centistoke # named after Sir George Gabriel Stokes
+      name: _centistoke
+      namePl: _centistokes
+      suffix: _ cSt
+      factor: 1.0e+6
+  _kndDynamic_Viscosity: # also Absolute Viscosity
+    symbol: _μ
+    siUnit: Pa.s
+    conversion:
+    - unit: Pa.s
+      name: _pascal_second
+      namePl: _pascal_seconds
+      suffix: _ Pa.s
+    - unit: centipoise # cSpell:disable  named after Jean Léonard Marie Poiseuille cSpell:enable
+      name: _centipoise
+      namePl: _centipoises
+      suffix: _ cP
+      factor: 1000
+    - unit: mPa.s
+      name: _millipascal_second
+      namePl: _millipascal_seconds
+      suffix: _ mPa.s
+      factor: 1000
+  _kndSound_Pressure:
+    symbol: _p
+    siUnit: pascal
+    conversion:
+    - unit: pascal
+      name: _pascal
+      namePl: _pascals
+      suffix: _ Pa
+    - unit: dBAir
+      name: _decibel_in_air
+      namePl: _decibels_in_air
+      suffix: _ dB(Air)
+      factor: 50000 # 1e6 / 20
+      logFactor: 20
+    - unit: dBWater
+      name: _decibel_in_water
+      namePl: _decibels_in_water
+      suffix: _ dB(Water)
+      factor: 1.0e+6
+      logFactor: 20
+  _kndNoise:
+    symbol: _N
+    siUnit: dBA 
+    conversion:
+    - unit: dBA
+      name: _decibel(A-weighted)
+      namePl: _decibels(A-weighted)
+      suffix: _ dBA
+  _kndAbsolute_Humidity:
+    symbol: _χ
+    siUnit: g/m3
+    conversion:
+    - unit: g/m3
+      name: _gram_per_cubic_metre
+      namePl: _grams_per_cubic_metre
+      suffix: _ g/m³
+  _kndRatio:
+    symbol: _φ
+    siUnit: ratio
+    conversion:
+    - unit: ratio
+      name: _ratio
+      namePl: _ratio
+      suffix: _
+    - unit: percent
+      name: _percent
+      namePl: _percent
+      suffix: _% # without a space per style guides for English - other languages will use a space see https://en.wikipedia.org/wiki/Percent_sign
+      factor: 100
+    - unit: ppm 
+      name: _part_per_million
+      namePl: _parts_per_million
+      suffix: _ ppm
+      factor: 1.0e+6
+    - unit: ppt 
+      name: _part_per_thousand
+      namePl: _parts_per_thousand
+      suffix: _ ‰
+      factor: 1.0e+3
+    - unit: AN
+      name: _acid_number
+      namePl: _acid_number
+      suffix: _ mgKOH/g
+      factor: 1000  
+contexts: #TODO need to complete display items for each
+  _Motor/<insMotorType>/<insLocation>:
+    _qtyRevolution_Speed: 
+      display: 
+        what: _Revs
+        which: <insLocation> <insMotorType>
+    _qtyPower:
+      display:
+        what: _Power
+        which: <insLocation> <insMotorType>
+    _qtyTorque:
+      display:
+        what: _Torque
+        which: <insLocation> <insMotorType>
+    _qtyLoad_Factor:
+      display:
+        what: _Load
+        which: <insLocation> <insMotorType>
+    _qtyTemperature:
+      display:
+        what: _Temp
+        which: <insLocation> <insMotorType>
+    _qtyRuntime:
+      display:
+        what: _Total_time
+        which: <insLocation> <insMotorType>
+    _qtyRevolutions:
+      display:
+        what: _Total_revolutions
+        which: <insLocation> <insMotorType>
+  _Motor/<insMotorType>/<insLocation>/_Fuel:
+    _qtyVolumetric_Flow:
+      display:
+        what: _Fuel_flow
+        which: <insLocation> <insMotorType> # net of input and output fuel
+    _qtyMass_Flow:
+      display:
+        what: _Fuel_flow
+        which: <insLocation> <insMotorType> # net of input and output fuel
+    _qtyVolume_Used:
+      display:
+        what: _Fuel_used
+        which: <insLocation> <insMotorType>
+    _qtyMass_Used:
+      display:
+        what: _Fuel_used
+        which: <insLocation> <insMotorType>
+  _Motor/<insMotorType>/<insLocation>/_Fuel/<insFluidLocation>:
+    _qtyPressure:
+      display:
+        what: _Fuel_pressure
+        which: <insLocation> <insMotorType> <insFluidLocation>
+    _qtyTemperature:
+      display:
+        what: _Fuel_temperature
+        which: <insLocation> <insMotorType> <insFluidLocation>
+    _qtyVolumetric_Flow:
+      display:
+        what: _Fuel_flow
+        which: <insLocation> <insMotorType> <insFluidLocation>
+    _qtyMass_Flow:
+      display:
+        what: _Fuel_flow
+        which: <insLocation> <insMotorType> <insFluidLocation>
+  _Motor/<insMotorType>/<insLocation>/_Coolant:
+    _qtyLevel:
+      display:
+        what: _Coolant_level
+        which: <insLocation> <insMotorType>
+    _qtyPressure:
+      display:
+        what: _Coolant_pressure
+        which: <insLocation> <insMotorType>
+    _qtyTemperature:
+      display:
+        what: _Coolant_temperature
+        which: <insLocation> <insMotorType>
+    _qtyRuntime:
+      display:
+        what: _Coolant_runtime
+        which: <insLocation> <insMotorType>
+  _Motor/<insMotorType>/<insLocation>/_Lubricant:
+    _qtyLevel:
+      display:
+        what: _Lubricant_level
+        which: <insLocation> <insMotorType>
+    _qtyPressure:
+      display:
+        what: _Lubricant_pressure
+        which: <insLocation> <insMotorType>
+    _qtyTemperature:
+      display:
+        what: _Lubricant_temperature
+        which: <insLocation> <insMotorType>
+    _qtyRuntime:
+      display:
+        what: _Lubricant_runtime
+        which: <insLocation> <insMotorType>
+    _qtyAcid_Number:
+      display:
+        what: _Lubricant_AN
+        which: <insLocation> <insMotorType>
+    _qtyTotal_Acid_Number:
+      display:
+        what: _Lubricant_TAN
+        which: <insLocation> <insMotorType>
+    _qtyTotal_Base_Number:
+      display:
+        what: _Lubricant_BN
+        which: <insLocation> <insMotorType>
+  _Motor/<insMotorType>/<insLocation>/_Lubricant/<insContaminant>:
+    _qtyMass_Concentration:
+      display:
+        what: _Lubricant <insContaminant> _content
+        which: <insLocation> <insMotorType>
+    _qtyMolar_Concentration:
+      display:
+        what: _Lubricant <insContaminant> _content
+        which : <insLocation> <insMotorType>
+  _Motor/<insMotorType>/<insLocation>/_Lubricant/<insFluidComponent>/<insFluidLocation>:
+    _qtyPressure:
+      display:
+        what: _Lubricant_pressure
+        which: <insLocation> <insMotorType> <insFluidLocation> <insFluidComponent>
+    _qtyTemperature:
+      display:
+        what: _Lubricant_pressure
+        which: <insLocation> <insMotorType> <insFluidLocation> <insFluidComponent>
+  _Powertrain/_Gearbox/<insLocation>:
+    _qtyRevolution_Speed:
+      display:
+        what: _Revs
+        which: <insLocation> _Gearbox
+    #_direction: {} # TODO ???
+    _qtyTorque:
+      display:
+        what: _Torque
+        which: <insLocation> _Gearbox
+    _qtyRuntime:
+      display:
+        what: _Total_time
+        which: <insLocation> _Gearbox
+  _Powertrain/_Gearbox/<insLocation>/_HydraulicFluid:
+    _qtyLevel:
+      display:
+        what: _Hydraulic_fluid_level
+        which: <insLocation> _Gearbox
+    _qtyTemperature:
+      display:
+        what: _Hydraulic_fluid_temperature
+        which: <insLocation> _Gearbox
+    _qtyPressure:
+      display:
+        what: _Hydraulic_fluid_pressure
+        which: <insLocation> _Gearbox
+    _qtyRuntime:
+      display:
+        what: _Hydraulic_fluid_total_time
+        which: <insLocation> _Gearbox
+  _Powertrain/_Driveshaft/<insLocation>:
+    _qtyRevolution_Speed:
+      display:
+        what: _Revs
+        which: <insLocation> _Driveshaft
+    _qtyTemperature:
+      display:
+        what: _Temperature
+        which: <insLocation> _Driveshaft
+  _Powertrain/_ThrustBlock/<insLocation>:
+    _qtyRevolution_Speed:
+      display:
+        what: _Revs
+        which: <insLocation> _ThrustBlock
+    _qtyTemperature:
+      display:
+        what: _Temperature
+        which: <insLocation> _ThrustBlock
+    _qtyTorque:
+      display:
+        what: _Torque
+        which: <insLocation> _ThrustBlock
+    _qtyRuntime:
+      display:
+        what: _Total_time
+        which: <insLocation> _ThrustBlock
+  _Powertrain/_ThrustBlock/<insLocation>/_Lubricant:
+    _qtyTemperature:
+      display:
+        what: _Lubricant_temperature
+        which: <insLocation> _ThrustBlock
+    _qtyRuntime:
+      display:
+        what: _Lubricant_runtime
+        which: <insLocation> _ThrustBlock
+  _Powertrain/_Propeller/<insLocation>:
+    _qtyRevolutions:
+      display:
+        what: _Total_revolutions
+        which: <insLocation> _Propeller
+    _qtyRuntime:
+      display:
+        what: _Total_time
+        which: <insLocation> _Propeller
+    _qtyBlade_Pitch:
+      display:
+        what: _Pitch
+        which: <insLocation> _Propeller
+  _Powertrain/_Waterjet/<insLocation>:
+    _qtyRevolution_Speed:
+      display:
+        what: _Total_revolutions
+        which: <insLocation> _Waterjet
+    _qtyRuntime:
+      display:
+        what: _Total_time
+        which: <insLocation> _Waterjet
+  _Power_Source/_Alternator/<insAlternator>:
+    _qtyTemperature:
+      display:
+        what: _Case_temperature
+        which: <insAlternator> _Alternator
+    _qtyRevolution_Speed:
+      display:
+        what: _Revs
+        which: <insAlternator> _Alternator
+  _Power_Source/_Alternator/<insAlternator>/<insElectricLocation>:
+    _qtyVoltage:
+      display:
+        what: <insElectricLocation> _Voltage
+        which: <insAlternator> _Alternator
+    _qtyElectric_Current:
+      display:
+        what: <insElectricLocation> _Current
+        which: <insAlternator> _Alternator
+    _qtyPower:
+      display:
+        what: <insElectricLocation> _Power
+        which: <insAlternator> _Alternator
+  _Power_Source/_SolarPanel/<insSolar>/_output:
+    _qtyVoltage:
+      display:
+        what: _output _Voltage
+        which: <insSolar> _SolarPanel
+    _qtyElectric_Current:
+      display:
+        what: _output _Current
+        which: <insSolar> _SolarPanel
+    _qtyTemperature:
+      display:
+        what: _Temperature
+        which: <insSolar> _SolarPanel
+  _Power_Source/_SolarController/<insSolar>:
+    _qtyTemperature:
+      display:
+        what: _Temperature
+        which: <insSolar> _SolarController
+  _Power_Source/_SolarController/<insSolar>/<insElectricLocation>:
+    _qtyVoltage:
+      display:
+        what: <insElectricLocation> _Voltage
+        which: <insSolar> _SolarController
+    _qtyElectric_Current:
+      display:
+        what: <insElectricLocation> _Current
+        which: <insSolar> _SolarController
+instances:
+  <insLocation>:
+    - _insMain                  # single engine
+    - _insPort                  # \
+    - _insCentre                # | twin and triple engines
+    - _insStarboard             # /
+    - _insWing                  # \
+    - _insPort_Wing             # | wing engines
+    - _insStarboard_Wing        # /
+    - _insPort_Outer            # \
+    - _insPort_Inner            # |
+    - _insCentre_Port           # | covers 4 - 6 engines
+    - _insCentre_Starboard      # |
+    - _insStarboard_Inner       # |
+    - _insStarboard_Outer       # /
+    - _insBow
+    - _insBow_Fwd               # \ allows for double bow thrusters
+    - _insBow_Aft               # /
+    - _insBow_Port              # \ allows for multihulls
+    - _insBow_Starboard         # /
+    - _insStern
+    - _insStern_Fwd             # \ allows for double stern thrusters
+    - _insStern_Aft             # /
+    - _insStern_Port            # \ allows for multihulls
+    - _insStern_Starboard       # /
+  <insMotorType>:
+    - _insPropulsion
+    - _insAnchor_Winch
+    - _insWinch
+    - _insThruster
+    - _insBilge_Pump
+  <insFluidComponent>:
+    - _insPump
+    - _insFilter
+    - _insCourse_Filter
+    - _insFine_Filter
+    - _insPre_Filter
+  <insFluidLocation>:
+    - _insInlet
+    - _insOutlet
+  <insElectricLocation>:
+    - _insInput
+    - _insOutput
+  <insContaminant>:
+    - _insIron
+    - _insChromium
+    - _insNickel
+    - _insAluminium
+    - _insCopper
+    - _insLead
+    - _insTin
+    - _insCadmium
+    - _insSilver
+    - _insVanadium
+    - _insSilicon
+    - _insSodium
+    - _insPotassium
+    - _insTitanium
+    - _insMolybdenum
+    - _insAntimony
+    - _insManganese
+    - _insLithium
+    - _insBoron
+    - _insMagnesium
+    - _insCalcium
+    - _insBarium
+    - _insZinc
+    - _insWater
+    - _insOil
+  <insAlternator>:
+    - _insMain
+    - _insStock
+    - _insAuxiliary
+    - _insDomestic
+  <insSolar>:
+    - _insMain
+    - _insForward
+    - _insAft
+    - _insPort
+    - _insStarboard

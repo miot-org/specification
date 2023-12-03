@@ -1,41 +1,38 @@
 dictionaryDefinitions:
   - name: unitsEn
-    path: "./cspell/unitsEn.txt"
+    path: ./cspell/unitsEn.txt
   - name: unitsEnGb
-    path: "./cspell/unitsEnGb.txt" 
-
+    path: ./cspell/unitsEnGb.txt
 dictionaries:
   - typescript
   - unitsEnGb
-
 language: en-gb
-
 words:
-  - ortac
-  - powertrain
-  - waterjet
-  - mmsi
-  - NMEA
-  - GNSS
-  - extinguishant
   - APIPA
-  - Bonjour
-  - OWFS
-  - AVAHI
-  - Mosquitto
-  - miscompare
-  - dedup
-  - HMAC
   - aton
-  - RAIM
-  - yanmar
-  - volvo
-  - mdprepare
+  - AVAHI
+  - Bonjour
+  - camelcase
+  - dedupe
+  - extinguishant
   - fsnip
+  - GNSS
+  - HMAC
   - jmespath
   - lcov
+  - mdprepare
+  - miscompare
+  - mmsi
+  - Mosquitto
+  - NMEA
+  - ortac
+  - OWFS
+  - powertrain
+  - RAIM
   - tsdoc
-
+  - volvo
+  - waterjet
+  - yanmar
 ignorePaths:
   - package*.json
   - "*config*.*{json,js,yaml,yml}"
@@ -46,11 +43,9 @@ ignorePaths:
   - .coveralls.yml
   - .*rc
   - "**.tgz"
-  
 ignoreRegExpList:
   - Urls
   - HexValues
   - Base64
   - Email
-
 useGitignore: true

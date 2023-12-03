@@ -1,0 +1,90 @@
+---
+$schema: http://ortac.org/locale/v1_0_0
+ortacVersion: 0.1.1
+author: ortac.org
+subject: Yanmar Display Specs
+locales:
+  "*":
+    displaySpecs:
+      - manufacturer: Yanmar
+        components:
+          alternator12V80A:
+            specifications:
+              _Power_Source/_Alternator/+:
+                _qtyTemperature:
+                  display:
+                    min: 313.15 # 40C
+                    max: 4523.15 # 150C
+                    errorHigh: 600
+                    warnUpper: 381.15 # 108C
+                    alertUpper: 388.15 # 115C (high temp point in manual)
+                    nominalMin: 298.15 # 40C
+                    nominalMax: 358.15 # 85C
+              _Power_Source/_Alternator/+/_insOutput:
+                _qtyVoltage:
+                  display:
+                    min: 8
+                    max: 16
+                    alertLower: 12.8
+                    warnLower: 13.5
+                    nominalMin: 13.9
+                    nominalMax: 14.8
+                    warnUpper: 15.0
+                    alertUpper: 15.5
+                    errorHigh: 50
+                _qtyElectric_Current:
+                  display:
+                    min: 0
+                    max: 100
+                    warnLower: 5
+                    warnUpper: 80
+                    alertUpper: 90
+                    errorHigh: 200
+        products:
+          6LPA:
+            # cSpell:disable
+            models:
+              - 6LPA-DTE
+              - 6LPA-DTZE
+              - 6LPA-DTP
+              - 6LPA-DTZP
+              - 6LPA-STE
+              - 6LPA-STZE
+              - 6LPA-STP
+              - 6LPA-STP2
+              - 6LPA-STZP
+              - 6LPA-STZP2
+              - 6LPA-STZP3
+              - 6LPA-STC(Z)
+            # cSpell:enable
+            description: Marine Diesel Engine
+            include:
+              - alternator12V80A
+            specifications:
+              _Motor/_insPropulsion/+:
+                _qtyRevolution_Speed:
+                  display:
+                    max: 418.879020478638 # 4000 rpm
+                    errorHigh: 500 # 4775 rpm
+                    warnLower: 75.9218224617532 # 725 rpm (minimum idle)
+                    warnUpper: 397.935069454705 # 3800 rpm
+                    alertUpper: 450.818545790136 # 4305rpm (max idle)
+                _qtyRuntime:
+                  display:
+                    unit: hour
+              _Motor/_insPropulsion/+/_Coolant:
+                _qtyTemperature:
+                  display:
+                    min: 313.15 # 40 C
+                    max: 393.15 # 120 C
+                    alertLower: 253.15 # -20 C
+                    warnLower: 268.15 # -5C
+                    nominalMin: 341.15 # 68 C
+                    nominalMax: 363.15 # 90 C
+                    warnUpper: 368.15 # 95 C
+                    alertUpper: 373.15 # 100 C
+                _qtyPressure:
+                  display:
+                    max: 137888.2758 # 20 psi
+                    warnUpper: 100000 # maximum pressure cap opening pressure 0.1 MPa
+                    alertUpper: 110310.6206 # 10% above maximum cap opening pressure (16.0 psi) (system must test to 17 psi)

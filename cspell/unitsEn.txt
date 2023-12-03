@@ -1,4 +1,6 @@
 # cspell:disable
+decimeter
+decimeters
 centimeter
 centimeters
 millimeter

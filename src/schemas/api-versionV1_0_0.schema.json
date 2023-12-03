@@ -1,0 +1,44 @@
+{
+  "$id": "http://ortac.org/api/version/v1_0_0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "API Version V1_0_0",
+  "description": "Ortac Resource Service API GET /version",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "$schema",
+    "apiVersions"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "pattern": "http://ortac.org/api/version/v1_0_0"
+    },
+    "apiVersions": {
+      "description": "List of versions of the API hosted",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "apiVersion",
+          "path",
+          "ortacVersion"
+        ],
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+          },
+          "path": {
+            "type": "string"
+          },
+          "ortacVersion": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+          }
+        }
+      }
+    }
+  }
+}

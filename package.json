@@ -1,6 +1,6 @@
 {
   "name": "@ortac/specification",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Ortac Specification and definition files",
   "type": "module",
   "main": "./lib/cjs/index.js",
@@ -29,9 +29,13 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "build": "node ./scripts/rm-rf.js ./lib && npm run build:dts && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/post-build.js",
-    "build:dts": "node --loader ts-node/esm scripts/build-dts-from-schema.ts",
-    "docs": "typedoc --excludePrivate --includeVersion --out pages/docs src/index.ts && node ./scripts/cp.js ./src/www ./pages",
+    "build": "node ./scripts/rm-rf.js ./lib && npm run build:dts && npm run build:esm && npm run build:cjs && node ./scripts/post-build.js && npm run build:manual-tests-and-md && npm run build:release",
+    "build:manual-tests-and-md": "node --loader ts-node/esm scripts/build-manual-tests-and-md.ts && mdprepare src/specification/*.md",
+    "build:release": "node --loader ts-node/esm scripts/build-release.ts",
+    "build:dts": "node --loader ts-node/esm scripts/build-dts-and-validators.ts",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "docs": "npm run build:dts && typedoc --excludePrivate --includeVersion --out pages/docs src/index.ts && node ./scripts/cp.js ./src/www ./pages",
     "spellcheck": "cspell **/*.{json,js,md,yaml} --dot",
     "mocha": "mocha --loader=ts-node/esm -r ts-node/register tests/**/*.spec.ts",
     "mocha:cov": "node ./scripts/rm-rf.js ./coverage && c8 npm run mocha",
@@ -39,8 +43,8 @@
     "eslint": "eslint src/**/*.{ts,tsx}",
     "eslint:fix": "eslint src/**/*.{ts,tsx} --fix",
     "test": "npm run spellcheck && npm run build:dts && npm run eslint && npm run mocha:cov",
-    "prepare": "npm test && npm run build",
-    "clean": "node ./scripts/rm-rf.js ./lib ./coverage ./pages"
+    "prepare": "npm test && npm run build && npm run docs",
+    "clean": "node ./scripts/rm-rf.js ./lib ./coverage ./build ./build-docs ./pages ./src/schemas/auto-build"
   },
   "keywords": [
     "ortac",
@@ -49,22 +53,31 @@
   "author": "ortac.org",
   "license": "SEE LICENSE IN ./LICENSE.md",
   "devDependencies": {
+    "@ortac/libs-js": "^0.0.4",
     "@shopify/eslint-plugin": "^43.0.0",
+    "@types/adm-zip": "^0.5.5",
     "@types/chai": "^4.3.9",
+    "@types/jmespath": "^0.15.2",
+    "@types/js-yaml": "^4.0.9",
+    "@types/json-schema": "^7.0.15",
     "@types/mocha": "^10.0.3",
     "@types/node": "^20.10.0",
+    "adm-zip": "^0.5.10",
+    "ajv": "^8.12.0",
     "c8": "^8.0.1",
     "chai": "^4.3.10",
     "cspell": "^7.3.8",
     "eslint": "^8.52.0",
     "eslint-plugin-tsdoc": "^0.2.17",
+    "fsnip": "^1.0.2",
+    "glob": "^10.3.10",
+    "jmespath": "^0.16.0",
+    "js-yaml": "^4.1.0",
     "json-schema-to-typescript": "^13.1.1",
+    "mdprepare": "^1.0.1",
     "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
     "typedoc": "^0.25.3",
     "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "@types/json-schema": "^7.0.15"
   }
 }

@@ -1,8 +1,8 @@
 # Ortac Standard
 
 ## Version 
-```txt mdpInsert fsnip ./package.json --from "'version\": \"'" --to "'\"'"
-0.1.1
+```txt mdpInsert fsnip ../../package.json --from "'version\": \"'" --to "'\"'"
+0.2.6
 ```
 
 ## Contents
@@ -228,11 +228,11 @@ This specification is versioned using Semantic Versioning as defined at [semver.
 2. MINOR version is incremented when functionality is added in a backwards compatible manor
 3. PATCH is incremented for backward compatible bug fixes
 
-The versioning applies to all parts of this specification as a whole including the Ortac Resource Service and the context specifications. Backwards compatible changes to the ortac-resources (ie principally additions and fixes to contexts, instances, quantities and kinds) are to be regarded as bug fixes.
+The versioning applies to all parts of this specification as a whole including the Ortac Resource Service and the context specifications. Backwards compatible changes to the resources (ie principally additions and fixes to contexts, instances, quantities and kinds) are to be regarded as bug fixes.
 
 Within the specification there are parts which have their own versioning. These are:
 - locale JSON file format - see ./locale.schema.json for specification
-- resource JSON file format - see ./schemas/ortac-resources.schema.json
+- resource JSON file format - see ./schemas/resources.schema.json
 - resources api version - the version number of the resources api will also be reflected in the version number of api-quantities.schema.json and api-version.schema.json
 
 :::{note}
@@ -240,7 +240,7 @@ In the case of the resource JSON file there is a version number for the file for
 :::
 
 :::{note}
-Software designed to provide the Ortac Resource Service will be designed to meet a particular MAJOR.MINOR version of this specification and will use the ortac-resources to provide its data. Therefore a PATCH increment to the ortac-resources can be accommodated without needing to change that software. 
+Software designed to provide the Ortac Resource Service will be designed to meet a particular MAJOR.MINOR version of this specification and will use the resources to provide its data. Therefore a PATCH increment to the resources can be accommodated without needing to change that software. 
 :::
 
 ## MQTT Payload Formats
@@ -1127,12 +1127,12 @@ Or
 
 This is the list of *quantity*/*quantityKind*, *property*/*propertyKind* and *ordinal*/*ordinalKind* pairs:
 
-[>]: # (mdpInsert cat ./build/quantities-table.md)
+[>]: # (mdpInsert cat ../../build_md/quantities-table.md)
 | quantityID | quantityKindID |
 | --- | --- |
 | \_qtyTemperature | \_kndTemperature |
 | \_qtyPressure | \_kndPressure |
-| \_qtyAbsolute\_Humidity | \_kndAbsoluteHumidity |
+| \_qtyAbsolute\_Humidity | \_kndAbsolute\_Humidity |
 | \_qtyDew\_Point | \_kndTemperature |
 | \_qtyRelative\_Humidity | \_kndRatio |
 | \_qtyDensity | \_kndDensity |
@@ -1200,7 +1200,7 @@ This is the list of *quantity*/*quantityKind*, *property*/*propertyKind* and *or
 
 ## Appendix 2 List of Units for each Quantity Kind
 
-[>]: # (mdpInsert cat ./build/kinds-table.md)
+[>]: # (mdpInsert cat ../../build_md/kinds-table.md)
 | quantityKind | en-GB Description | unit Symbol | unit Suffix | unit Description |
 | --- | --- | :---: | :---: | --- |
 | \_kndTime\_Interval | Time Interval | t |  s | seconds |
@@ -1311,6 +1311,7 @@ This is the list of *quantity*/*quantityKind*, *property*/*propertyKind* and *or
 | | | |  g/mL | grams per millilitre |
 | \_kndMolar\_Concentration | Molar Concentration | c |  mol/m³ | moles per cubic metre |
 | | | |  mol/L | moles per litre |
+| | | |  mol/dm³ | moles per cubic decimetre |
 | \_kndLuminance | Luminance | Lᵥ |  cd/m² | candelas per square metre |
 | \_kndTorque | Torque | τ |  J/rad | joules per radian |
 | | | |  Nm | newton metres |
@@ -1341,7 +1342,7 @@ This is the list of *quantity*/*quantityKind*, *property*/*propertyKind* and *or
 | | | |  dB\(Air\) | decibels in air |
 | | | |  dB\(Water\) | decibels in water |
 | \_kndNoise | Noise | N |  dBA | decibels\(A\-weighted\) |
-| \_kndAbsoluteHumidity | AbsoluteHumidity | χ |  g/m³ | grams per cubic metre |
+| \_kndAbsolute\_Humidity | Absolute Humidity | χ |  g/m³ | grams per cubic metre |
 | \_kndRatio | Ratio | φ |  | ratio |
 | | | | % | percent |
 | | | |  ppm | parts per million |

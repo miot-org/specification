@@ -38,9 +38,8 @@ var ortac = require('@ortac/specification');
 console.log(ortac.schemas.locale.V1_0_0);
 ```
 
-## API Reference
+## Documentation
 
-Documentation can be found at:
+Documentation can be found [here](https://ortac-org.github.io/specification/docs/modules.html)
 
-- [add](https://ortac-org.github.io/specification/docs/functions/add.html)
-- [subtract](https://ortac-org.github.io/specification/docs/functions/subtract.html)
+An explanation of everything produced by this project is [here](readme2.md) 

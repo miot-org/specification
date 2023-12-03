@@ -1,0 +1,8 @@
+{
+  "$schema": "http://ortac.org/api/quantities/v1_0_0",
+  "ortacVersion": "21.02.0",
+  "quantities": [
+    ["_qtySomething", "xyz"],
+    ["_qtySomeOther", "abc"]
+  ]
+}

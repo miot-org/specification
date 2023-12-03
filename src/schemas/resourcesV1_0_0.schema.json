@@ -1,0 +1,284 @@
+{
+  "$id": "http://ortac.org/resources/v1_0_0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Resources V1_0_0",
+  "description": "Full Schema describing the format of the Ortac resources JSON file",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "ortacVersion",
+    "contexts",
+    "instances",
+    "kinds",
+    "quantities"
+  ],
+  "properties": {
+    "$schema": {
+      "type":"string",
+      "pattern": "http://ortac.org/resources/v1_0_0"
+    },
+    "ortacVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "contexts": {
+      "description": "The list of contexts",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "patternProperties": {
+        "^_[A-Za-z0-9_]+((/<ins[A-Za-z]+>)|(/_[A-Za-z]+))*$": {
+          "description": "contains one property for each quantity available in this context",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": {
+            "^_qty[a-zA-Z0-9_]+$": {
+              "description": "info about this specific quantity in this context",
+              "type": "object",
+              "minProperties": 1,
+              "maxProperties": 1,
+              "additionalProperties": false,
+              "required": [
+                "display"
+              ],
+              "properties": {
+                "display": {
+                  "type": "object",
+                  "required": [
+                    "what",
+                    "which"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "what": {
+                      "type": "string",
+                      "pattern": "^((<ins[A-Za-z]+> ?)|(_[A-Za-z_]+) ?)*$"
+                    },
+                    "which": {
+                      "type": "string",
+                      "pattern": "^((<ins[A-Za-z]+> ?)|(_[A-Za-z_]+) ?)*$"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9.-/]+$"
+                    },
+                    "decimalPlaces": {
+                      "type": "integer"
+                    },
+                    "exponent": {
+                      "oneOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "string",
+                          "pattern": "^log$"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "instances": {
+      "description": "The list of instances",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "patternProperties": {
+        "<ins[A-Za-z]+>": {
+          "description": "list of all possible values for this instance",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^_ins[a-zA-Z0-9_]+$"
+          }
+        }
+      }
+    },
+    "kinds": {
+      "description": "The list of kinds",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^_knd[a-zA-Z0-9_]+$": {
+          "$ref": "#/$defs/kindV1_0_0"
+        }
+      }
+    },
+    "quantities": {
+      "description": "The list of quantities",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "patternProperties": {
+        "^_qty[a-zA-Z0-9_]+$": {
+          "$ref": "#/$defs/quantityV1_0_0"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "conversionV1_0_0Full": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/conversionV1_0_0"
+        },
+        {
+          "required": [
+            "factor",
+            "divisor",
+            "offset",
+            "logFactor"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "factor": {
+              "type": "number"
+            },
+            "divisor": {
+              "type": "number"
+            },
+            "offset": {
+              "type": "number"
+            },
+            "logFactor": {
+              "type": "number"
+            }
+          }
+        }
+      ]
+    },
+    "conversionV1_0_0": {
+      "type": "object",
+      "required": [
+        "unit",
+        "name",
+        "namePl",
+        "suffix"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unit": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-./]+$"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^_\\S+$"
+        },
+        "namePl": {
+          "type": "string",
+          "pattern": "^_\\S+$"
+        },
+        "suffix": {
+          "type": "string",
+          "pattern": "^_[^\u0000-\u001f]*$"
+        },
+        "factor": {
+          "type": "number"
+        },
+        "divisor": {
+          "type": "number"
+        },
+        "offset": {
+          "type": "number"
+        },
+        "logFactor": {
+          "type": "number"
+        }
+      }
+    },
+    "quantityV1_0_0": {
+      "description": "info about this individual quantity",
+      "type": "object",
+      "required": [
+        "kind",
+        "display"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "pattern": "^_knd[a-zA-Z0-9_]+$"
+        },
+        "display": {
+          "type": "object",
+          "required": [
+            "unit",
+            "decimalPlaces",
+            "min",
+            "max"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "unit": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9-./]+$"
+            },
+            "decimalPlaces": {
+              "type": "integer"
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "errorLow": {
+              "type": "number"
+            },
+            "errorHigh": {
+              "type": "number"
+            },
+            "exponent": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^log$"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "kindV1_0_0": {
+      "description": "a specific Ortac kind",
+      "type": "object",
+      "required": [
+        "symbol",
+        "siUnit",
+        "conversion"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "pattern": "^_\\S+$"
+        },
+        "siUnit": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-./]+$"
+        },
+        "conversion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conversionV1_0_0"
+          }
+        }
+      }
+    }
+  }
+}

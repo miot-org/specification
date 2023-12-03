@@ -1,0 +1,15 @@
+{
+  "$schema": "http://ortac.org/api/version/v1_0_0",
+  "apiVersions": [
+    {
+      "apiVersion": "8.0.7",
+      "path": "apiV8",
+      "ortacVersion": "23.2.9"
+    },
+    {
+      "apiVersion": "9.2.2",
+      "path": "apiV9",
+      "ortacVersion": "28.23.124"
+    }
+  ]
+}
