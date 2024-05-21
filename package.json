@@ -44,7 +44,7 @@
     "eslint:fix": "eslint src/**/*.{ts,tsx} --fix",
     "test": "npm run spellcheck && npm run build:dts && npm run eslint && npm run mocha:cov",
     "prepare": "npm test && npm run build && npm run docs",
-    "clean": "node ./scripts/rm-rf.js ./lib ./coverage ./build ./build-docs ./pages ./src/schemas/auto-build"
+    "clean": "node ./scripts/rm-rf.js ./lib ./coverage ./build ./build_md ./pages ./src/schemas/auto-build"
   },
   "keywords": [
     "ortac",
